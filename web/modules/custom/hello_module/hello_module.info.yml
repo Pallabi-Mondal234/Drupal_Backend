@@ -1,0 +1,18 @@
+# Module name of custom module.
+name: 'Hello Module'
+# Defines the type of extension.
+type: module
+# Description of Custom Module.
+description: 'A simple module that prints Hello World.'
+# Specifies which versions of Drupal core this module supports.
+# "^10" means compatible with Drupal 10.x only.
+core_version_requirement: ^10
+# Groups your module under a package name in the Extend admin UI.
+# "Custom" is typically used for custom-built modules.
+package: Custom
+# Lists the module dependencies — these modules must be enabled for this module to work.
+dependencies:
+  - node
+  - views_ui
+ 
+ 

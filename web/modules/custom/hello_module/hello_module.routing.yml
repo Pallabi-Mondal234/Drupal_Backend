@@ -1,0 +1,16 @@
+# Route machine name.
+hello_module.hello:
+  # The URL path that will trigger this route.
+  path: '/hello_module'
+  # Default values for the route.
+  defaults:
+    # The controller class and method that should handle the request.
+    # Format: Namespace\ClassName::method
+    _controller: 'Drupal\hello_module\Controller\HelloController::hello'
+    # The title that will appear on the page.
+    _title: 'Hello Page'
+  # Access control for the route.
+  requirements:
+    # The user must have this permission to access the route.
+    # "access content" is a common permission given to authenticated users.
+    _permission: 'access content'    
