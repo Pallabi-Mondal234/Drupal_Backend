@@ -9,6 +9,7 @@ dependencies:
     - contact
     - file
     - filter
+    - hello_module1
     - search
     - shortcut
     - system
@@ -21,6 +22,7 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access hello page'
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'delete own files'
