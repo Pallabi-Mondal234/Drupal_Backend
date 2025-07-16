@@ -1,4 +1,7 @@
 <?php
+/**
+  * {@inheritdoc}
+  */
 function form_module_schema() {
   $schema['form_submission'] = [
     '#description'=>'Store submitted form data.',
@@ -32,7 +35,6 @@ function form_module_schema() {
   ];
   return $schema;
 }
-
 
 ?>
 

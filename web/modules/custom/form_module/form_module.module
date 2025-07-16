@@ -1,7 +1,9 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
-
+/**
+  * {@inheritdoc}
+*/
 function form_module_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   if ($form_id == 'custom_form_id') {
     $form['phone'] = [

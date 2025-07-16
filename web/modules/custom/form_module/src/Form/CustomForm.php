@@ -7,11 +7,20 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
 
-
+/**
+ * Build Generic form.
+ */
 class CustomForm extends FormBase {
+  /**
+   * {@inheritdoc}
+   */
   public function getFormId() {
     return 'custom_form_id';
   }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['name'] = array(
       '#type' => 'textfield',
@@ -93,11 +102,16 @@ class CustomForm extends FormBase {
     $form['#submit'][] = 'form_module_custom_form_id_submit';
     return $form;
   }
-
+  /**
+   * {@inheritdoc}
+   */
   public function updateOtherField(array &$form, FormStateInterface $form_state) {
     return $form['other_gender_wrapper'];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     \Drupal::messenger()->addMessage(('Form testing completd'));
     $data = $form_state->getValues();
