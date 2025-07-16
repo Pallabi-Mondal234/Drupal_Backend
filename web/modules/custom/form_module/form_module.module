@@ -1,0 +1,75 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+function form_module_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'custom_form_id') {
+    $form['phone'] = [
+      '#type' => 'tel',
+      '#title' => 'Phone Number',
+      '#weight' => 0,
+    ];
+    $form['email']['#title'] = 'Enter your email address';
+    //create a readonly field.
+    $form['default']['#attributes']['readonly'] = 'readonly';
+
+    //remove an existing field entirely from the form
+    unset($form['last_name']);
+    if (\Drupal::currentUser()->isAnonymous()) {
+      $form['email']['#access'] = FALSE;
+    }
+    //Add a checkbox in form.
+    $form['agree_terms'] = [
+      '#type' => 'checkbox',
+      '#title' => ('I agree the terms and conditions.'),
+      '#required' => TRUE
+    ];
+    //Options field
+    $form['options'] = [
+      '#type' => 'select',
+      '#title' => t('Choose an option'),
+      '#options' => [
+        'A' => t('Option A'),
+        'B' => t('Option B'),
+        'Other' => t('Other'),
+      ],
+      '#required' => TRUE,
+    ];
+
+    //use #states to show/hide fields dynamically
+    $form['other_text'] = [
+      '#type' => 'textfield',
+      '#title' => t('Other, please specify'),
+      '#states' => [
+        'visible' => [
+          ':input[name="options"]' => ['value' => 'Other'],
+        ],
+      ],
+    ];
+    $form['#validate'][]='form_module_custom_validate';
+    if (isset($form['submit'])) {
+      $form['submit']['#weight'] = 10;
+      $form['submit']['#value'] = ('Send Now');
+    }
+  }
+}
+/**
+ * For Validating the custom form.
+ */
+function form_module_custom_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if(strlen($form_state->getValue('name'))<3) {
+    $form_state->setErrorByName('name',t('Name must be atleast 3 characters.'));
+  }
+}
+
+/**
+ * After form is submitted, call hook.
+ */
+function form_module_custom_form_id_submit($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $data = $form_state->getValues();
+
+  // Invoke hook so other modules can react.
+  \Drupal::moduleHandler()->invokeAll('form_module_submit', [$data]);
+}
+?>
+

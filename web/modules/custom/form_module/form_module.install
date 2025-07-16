@@ -1,0 +1,38 @@
+<?php
+function form_module_schema() {
+  $schema['form_submission'] = [
+    '#description'=>'Store submitted form data.',
+    'fields'=>[
+      'id'=>[
+        'type'=>'serial',
+        'not null'=>TRUE,
+      ],
+      'name'=>[
+        'type'=>'varchar',
+        'length'=>100,
+        'not null'=>TRUE,
+      ],
+      'email'=>[
+        'type'=>'varchar',
+        'length'=>150,
+        'not null'=>TRUE,
+      ],
+      'phone'=>[
+        'type'=>'varchar',
+        'length'=>10,
+        'not null'=>TRUE,
+      ],
+      'age'=>[
+        'type'=>'int',
+        'length'=>3,
+        'not null'=>TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}
+
+
+?>
+
