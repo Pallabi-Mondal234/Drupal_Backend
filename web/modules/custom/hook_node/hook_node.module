@@ -1,0 +1,111 @@
+<?php
+use Drupal\node\NodeInterface;
+
+/**
+ * Implement hook_node_insert().
+ */
+function hook_node_node_insert(NodeInterface $node) {
+  //1. Log the creation.
+  $title = $node->getTitle();
+  $author = $node->getOwner()->getDisplayName();
+
+  // Log a custom message
+  \Drupal::logger('hook_node')->notice('Node "@title" was created by @user.', [
+    '@title' => $title,
+    '@user' => $author,
+  ]);
+
+  //2.Send Email
+  $mail_manager = \Drupal::service('plugin.manager.mail');
+  $module = 'hook_node';
+  $key = 'node_created';
+  $to = 'admin@example.com';
+  $params = [
+    'message' => 'A new Node ' . $node->getTitle() . 'has been created.',
+  ];
+  $language = \Drupal::currentUser()->getPreferredLangcode();
+  $send = TRUE;
+  $mail_manager->mail($module, $key, $to, $language, $params, NULL, $send);
+
+  //3. Conditionally delete if node title is empty.
+  if(trim($node->getTitle())=== '') {
+    $node->delete();
+    \Drupal::logger('hook_node')->warning('Node deleted because title is empty.');
+  }
+
+  //4. Update field.
+  if($node->hasField('field_status')) {
+    $node->set('field_status','Draft');
+    $node->save();
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function hook_node_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'node_created':
+      $message['subject'] = 'New Node Created';
+      $message['body'][] = $params['message'];
+      break;
+    case 'form_submission':
+      $message['subject'] = 'Form Submitted';
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+/**
+ * Implement hook_node_delete().
+ */
+function hook_node_node_update(NodeInterface $node) {
+  // Get node title
+  $title = $node->getTitle();
+
+  // Get the user who created the node
+  $author = $node->getOwner()->getDisplayName();
+
+  // Log a custom message
+  \Drupal::logger('hook_node')->notice('Node "@title" was updated by @user.', [
+    '@title' => $title,
+    '@user' => $author,
+  ]);
+}
+
+/**
+ * Implement hook_node_delete().
+ */
+function hook_node_node_delete(NodeInterface $node) {
+  // Get node title
+  $title = $node->getTitle();
+
+  // Get the user who created the node
+  $author = $node->getOwner()->getDisplayName();
+
+  // Log a custom message
+  \Drupal::logger('hook_node')->notice('Node "@title" was deleted by @user.', [
+    '@title' => $title,
+    '@user' => $author,
+  ]);
+}
+
+/**
+ * Implements hook_form_module_submit().
+ */
+function hook_node_form_module_submit($data) {
+  $to = 'pallabi@example.com';
+  $subject = 'Form Submitted';
+  $body = 'A user submitted the form. Name: ' . $data['name'];
+
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $module = 'hook_node';
+  $key = 'form_submission';
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $params = ['message' => $body];
+  $send = true;
+
+  $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+}
+
+?>
