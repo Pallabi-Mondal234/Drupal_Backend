@@ -1,7 +1,7 @@
 <?php
 /**
-  * {@inheritdoc}
-  */
+ * Create database for storing data after form submission.
+ */
 function form_module_schema() {
   $schema['form_submission'] = [
     '#description'=>'Store submitted form data.',
