@@ -4,5 +4,5 @@ hello_module1.hello:
     _controller: '\Drupal\hello_module1\Controller\HelloController::hello'
     _title: 'Hello User Page'
   requirements:
-    _permission: 'Access Hello Page'
+    _permission: 'access hello page'
 
