@@ -10,8 +10,10 @@ module:
   ckeditor5: 0
   comment: 0
   config: 0
+  config_form: 0
   contact: 0
   contextual: 0
+  custom_block: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
@@ -20,8 +22,11 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  form_module: 0
+  hello_module: 0
   help: 0
   history: 0
+  hook_node: 0
   image: 0
   link: 0
   menu_link_content: 0
@@ -32,8 +37,10 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  routing_system: 0
   search: 0
   shortcut: 0
+  smtp: 0
   system: 0
   taxonomy: 0
   text: 0
