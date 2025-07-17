@@ -12,16 +12,14 @@ class UserConfigForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId()
-  {
+  public function getFormId() {
     return 'config_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function getEditableConfigNames()
-  {
+  protected function getEditableConfigNames() {
     return ['config_form.settings'];
   }
 
