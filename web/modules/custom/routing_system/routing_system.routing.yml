@@ -1,0 +1,17 @@
+routing_system.operation:
+  path: '/custom-route'
+  defaults:
+    _controller: '\Drupal\routing_system\Controller\RouteController::welcome'
+    _title: Routing Page
+  requirements:
+    # _permission: 'access the custom page'
+    # _role: administrator + content_editor
+    custom_access: '\Drupal\routing_system\Controller\RouteController::accessCheck'
+
+routing_system.dynamic:
+  path: '/campaign/value/{node}'
+  defaults:
+    _controller: 'Drupal\routing_system\Controller\RouteController::dynamicPath'
+    _title: 'Campaign in Routing'
+  requirements:
+    _permission: 'access the custom page'

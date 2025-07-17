@@ -1,0 +1,6 @@
+name: Routing System
+type: module
+description: It consist operation like altering routes,parameter and dynamic routes.
+core_version_requirement: ^10
+package: custom
+
