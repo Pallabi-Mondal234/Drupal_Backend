@@ -1,0 +1,5 @@
+name: 'User config form'
+type: module
+description: 'Provide a configuration form to capture user info with validation'
+core_version_requirement: ^10
+package: custom

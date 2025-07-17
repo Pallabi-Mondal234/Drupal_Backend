@@ -1,0 +1,6 @@
+config_form.settings:
+  title: 'User Info Configuration'
+  description: 'Set full_name, phone, email and gender.'
+  parent: system.admin_config_system
+  route_name: config_form.settings
+  weight: 100
