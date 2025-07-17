@@ -1,4 +1,4 @@
-FormModule.custom_form:
+form_module.custom_form:
   path: '/form'
   defaults:
     _form: '\Drupal\form_module\Form\CustomForm'

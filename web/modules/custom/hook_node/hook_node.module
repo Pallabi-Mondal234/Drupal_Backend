@@ -3,6 +3,9 @@ use Drupal\node\NodeInterface;
 
 /**
  * Implement hook_node_insert().
+ * 
+ * @param NodeInterface $node
+ *    The node object that was just created.
  */
 function hook_node_node_insert(NodeInterface $node) {
   //1. Log the creation.
@@ -42,8 +45,15 @@ function hook_node_node_insert(NodeInterface $node) {
 
 /**
  * Implements hook_mail().
+ * 
+ * @param string $key
+ *   A key to identify the email being sent.
+ * @param array &$message
+ *   The full email message array that can be altered.
+ * @param array $params
+ *   Parameters passed from the original mail call.
  */
-function hook_node_mail($key, &$message, $params) {
+function hook_node_mail(string $key, array &$message, array $params) {
   switch ($key) {
     case 'node_created':
       $message['subject'] = 'New Node Created';
@@ -57,7 +67,10 @@ function hook_node_mail($key, &$message, $params) {
 }
 
 /**
- * Implement hook_node_delete().
+ * Implement hook_node_update().
+ * 
+ * @param NodeInterface $node
+ *    The updated node object.
  */
 function hook_node_node_update(NodeInterface $node) {
   // Get node title
@@ -75,6 +88,9 @@ function hook_node_node_update(NodeInterface $node) {
 
 /**
  * Implement hook_node_delete().
+ * 
+ * @param NodeInterface $node
+ *   The node object that was deleted.
  */
 function hook_node_node_delete(NodeInterface $node) {
   // Get node title
@@ -92,8 +108,11 @@ function hook_node_node_delete(NodeInterface $node) {
 
 /**
  * Implements hook_form_module_submit().
+ * 
+ * @param array $data
+ *   The submitted form data passed by the form module.
  */
-function hook_node_form_module_submit($data) {
+function hook_node_form_module_submit(array $data) {
   $to = 'pallabi@example.com';
   $subject = 'Form Submitted';
   $body = 'A user submitted the form. Name: ' . $data['name'];
