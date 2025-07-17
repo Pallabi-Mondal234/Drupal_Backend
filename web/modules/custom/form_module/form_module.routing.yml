@@ -4,4 +4,4 @@ form_module.custom_form:
     _form: '\Drupal\form_module\Form\CustomForm'
     _title: 'form'
   requirements:
-    _permission: 'access content'
+    _permission: 'access form page'
