@@ -1,0 +1,7 @@
+custom_block.routing:
+  path: '/custom-welcome-page'
+  defaults:
+    _controller: Drupal\custom_block\Controller\WelcomeController::welcome
+    _title: 'Welcome'
+  requirements:
+    _permission: 'access content'
