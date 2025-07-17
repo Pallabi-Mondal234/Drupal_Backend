@@ -1,0 +1,7 @@
+services:
+  custom_block.login_subscriber:
+    class: Drupal\custom_block\EventSubscriber\LoginRedirectSubscriber
+    arguments: ['@redirect.destination', '@current_user']
+    tags:
+      - { name: event_subscriber }
+
