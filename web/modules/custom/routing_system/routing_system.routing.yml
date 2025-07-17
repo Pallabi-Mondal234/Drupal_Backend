@@ -15,5 +15,3 @@ routing_system.dynamic:
     _title: 'Campaign in Routing'
   requirements:
     _permission: 'access the custom page'
-
-
