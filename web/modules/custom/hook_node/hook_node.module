@@ -107,8 +107,8 @@ function hook_node_node_delete(NodeInterface $node) {
 }
 
 /**
- * Implements hook_form_module_submit().
- * 
+ * Implements hook_form_module_submit() which is a custom hook it perform when 
+ * form module submit function is called.
  * @param array $data
  *   The submitted form data passed by the form module.
  */
