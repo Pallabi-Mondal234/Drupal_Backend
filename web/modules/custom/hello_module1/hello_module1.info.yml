@@ -1,0 +1,10 @@
+# Name of the module.
+name: 'Hello Module1'
+# Defines the type of extension.
+type: module
+# A brief description of what the module does.
+description: 'Displays a Hello [User] page with permission control.'
+# Specifies which versions of Drupal core this module supports.
+core_version_requirement: ^10
+# Groups your module under a package name in the Extend admin UI.
+package: Custom
