@@ -1,0 +1,5 @@
+name: 'User Welcome'
+type: module
+description: 'Displays a Hello [User] page with permission control.'
+core_version_requirement: ^10
+package: Custom
