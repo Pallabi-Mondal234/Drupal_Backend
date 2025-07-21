@@ -1,4 +1,0 @@
-services:
-  hello_module1.greeting_user:
-    class: Drupal\hello_module1\Service\GreetingService
-    arguments: ['@current_user']
