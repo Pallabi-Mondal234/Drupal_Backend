@@ -6,7 +6,22 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Access\AccessResult;
 
 /**
- * Check if the current user has administrator role.
+ * This hook implementation restricts the 'view' and 'edit' access
+ * of the 'rgb_color' field to administrators only.
+ * 
+ * @param string $operation
+ *   The operation being performed on the field. Possible values: 'view', 
+ *   'edit', etc.
+ * @param FieldDefinitionInterface $field_definition
+ *   The field definition object.
+ * @param AccountInterface $account
+ *   The user account requesting access.
+ * @param FieldItemListInterface|null $items
+ *   (Optional) The list of field items. Defaults to NULL.
+ *
+ * @return AccessResultInterface
+ *   The access result object indicating whether access is allowed, denied,
+ *   or neutral. 
  */
 function rgb_color_field_entity_field_access(string $operation, FieldDefinitionInterface $field_definition,
 AccountInterface $account, FieldItemListInterface $items = NULL) {
