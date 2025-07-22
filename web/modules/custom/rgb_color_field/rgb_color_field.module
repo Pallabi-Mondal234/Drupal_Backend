@@ -17,7 +17,7 @@ use Drupal\Core\Access\AccessResult;
  * @param AccountInterface $account
  *   The user account requesting access.
  * @param FieldItemListInterface|null $items
- *   (Optional) The list of field items. Defaults to NULL.
+ *   The list of field items. Defaults to NULL.
  *
  * @return AccessResultInterface
  *   The access result object indicating whether access is allowed, denied,
