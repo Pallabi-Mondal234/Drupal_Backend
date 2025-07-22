@@ -1,0 +1,7 @@
+name: 'RGB Color Field'
+type: module
+description: 'Provides an rgb color field with multipler widgets and formatters.'
+core_version_requirement: ^10
+package: custom
+dependencies:
+  -field

@@ -1,0 +1,23 @@
+<?php
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Check if the current user has administrator role.
+ */
+function rgb_color_field_entity_field_access(string $operation, FieldDefinitionInterface $field_definition,
+AccountInterface $account, FieldItemListInterface $items = NULL) {
+  if ($field_definition->getType() === 'rgb_color' &&
+      $field_definition->getTargetEntityTypeId() === 'node') {
+    if (!in_array('administrator', $account->getRoles())) {
+      if (in_array($operation, ['view', 'edit'])) {
+        return AccessResult::forbidden();
+      }
+    }
+  }
+  return AccessResult::neutral();
+}
+?>
