@@ -7,7 +7,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 
 /**
  * Plugin implementation of the 'rgb_background_formatter' formatter.
- * 
+ *
  * @FieldFormatter(
  *  id = "rgb_background_formatter",
  *  label = @Translation("RGB Background Color Formatter"),
@@ -17,11 +17,11 @@ use Drupal\Core\Field\FieldItemListInterface;
  * )
  */
 class RgbBackgroundFormatter extends FormatterBase {
-  
+
   /**
    * {@inheritdoc}
    */
-  public function viewElements(FieldItemListInterface $items, $langcode)  {
+  public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
 
     foreach ($items as $delta => $item) {
@@ -37,5 +37,5 @@ class RgbBackgroundFormatter extends FormatterBase {
     }
     return $elements;
   }
+
 }
-?>

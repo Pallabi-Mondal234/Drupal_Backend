@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Plugin implementation of the 'color_picker_widget' widget.
- * 
+ *
  * @FieldWidget(
  *  id = "color_picker_widget",
  *  label = @Translation("HTML5 Color Picker"),
@@ -18,12 +18,17 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class ColorPickerWidget extends WidgetBase {
-  
+
   /**
    * {@inheritdoc}
    */
-  public function formElement(FieldItemListInterface $items, $delta, array $element, 
-  array &$form, FormStateInterface $form_state) {
+  public function formElement(
+    FieldItemListInterface $items,
+    $delta,
+    array $element,
+    array &$form,
+    FormStateInterface $form_state,
+  ) {
     $element['value'] = [
       '#type' => 'color',
       '#title' => $this->t('Color Picker'),
@@ -31,5 +36,5 @@ class ColorPickerWidget extends WidgetBase {
     ];
     return $element;
   }
+
 }
-?>

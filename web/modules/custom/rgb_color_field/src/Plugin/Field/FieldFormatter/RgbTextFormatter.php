@@ -7,7 +7,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 
 /**
  * Plugin implementation of the 'rgb_text_color' formatter.
- * 
+ *
  * @FieldFormatter(
  *  id = "rgb_text_formatter",
  *  label = @Translation("RGB Text Formatter"),
@@ -17,17 +17,17 @@ use Drupal\Core\Field\FieldItemListInterface;
  * )
  */
 class RgbTextFormatter extends FormatterBase {
-  
+
   /**
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
 
-    foreach($items as $delta => $item) {
+    foreach ($items as $delta => $item) {
       $elements[$delta] = ['#markup' => $item->value];
     }
     return $elements;
   }
+
 }
-?>

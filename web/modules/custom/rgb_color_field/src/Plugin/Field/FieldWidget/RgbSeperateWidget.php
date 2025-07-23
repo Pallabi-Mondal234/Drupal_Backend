@@ -7,8 +7,8 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Plugin implementation of the 'rgb_seperate_widget' widget
- * 
+ * Plugin implementation of the 'rgb_seperate_widget' widget.
+ *
  * @FieldWidget(
  *  id = "rgb_seperate_widget",
  *  label = @Translation("RGB Seperate Input"),
@@ -18,12 +18,17 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class RgbSeperateWidget extends WidgetBase {
-  
+
   /**
    * {@inheritdoc}
    */
-  public function formElement(FieldItemListInterface $items, $delta, array $element, 
-  array &$form, FormStateInterface $form_state) {
+  public function formElement(
+    FieldItemListInterface $items,
+    $delta,
+    array $element,
+    array &$form,
+    FormStateInterface $form_state,
+  ) {
     $value = $items[$delta]->value ?? '#000000';
     [$r, $g, $b] = sscanf(ltrim($value, '#'), "%02x%02x%02x");
 
@@ -52,10 +57,13 @@ class RgbSeperateWidget extends WidgetBase {
   }
 
   /**
-   * @inheritdoc
+   * {@inheritdoc}
    */
-  public function massageFormValues(array $values, array $form, 
-  FormStateInterface $form_state) {
+  public function massageFormValues(
+    array $values,
+    array $form,
+    FormStateInterface $form_state,
+  ) {
     foreach ($values as &$value) {
       $r = $value['r'] ?? 0;
       $g = $value['g'] ?? 0;
@@ -64,5 +72,5 @@ class RgbSeperateWidget extends WidgetBase {
     }
     return $values;
   }
+
 }
-?>

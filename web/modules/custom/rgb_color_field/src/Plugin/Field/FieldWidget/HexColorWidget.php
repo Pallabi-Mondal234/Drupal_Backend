@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Plugin implementation of the 'hex_color_widget' widget.
- * 
+ *
  * @FieldWidget(
  *  id = "hex_color_widget",
  *  label = @Translation("Hex code Input"),
@@ -22,8 +22,13 @@ class HexColorWidget extends WidgetBase {
   /**
    * {@inheritdoc}
    */
-  public function formElement(FieldItemListInterface $items, $delta, array $element, 
-  array &$form, FormStateInterface $form_state) {
+  public function formElement(
+    FieldItemListInterface $items,
+    $delta,
+    array $element,
+    array &$form,
+    FormStateInterface $form_state,
+  ) {
     $element['value'] = [
       '#type' => 'textfield',
       '#title' => $this->t("Hex Color Code"),
@@ -34,5 +39,5 @@ class HexColorWidget extends WidgetBase {
     ];
     return $element;
   }
+
 }
-?>
