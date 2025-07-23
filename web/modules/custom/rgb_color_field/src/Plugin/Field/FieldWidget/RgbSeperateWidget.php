@@ -7,7 +7,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Plugin implementation of the 'rgb_seperate_widget' widget.
+ * Implementation of the 'rgb_seperate_widget' widget using plugin.
  *
  * @FieldWidget(
  *  id = "rgb_seperate_widget",
