@@ -23,4 +23,3 @@
 /web/**/.gitignore
 
 node_modules/
-/web/modules/custom
