@@ -6,7 +6,7 @@ use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;
 
 /**
- * Plugin implementation of the 'rgb_text_color' formatter.
+ * Implementation of the 'rgb_text_color' formatter using plugin.
  *
  * @FieldFormatter(
  *  id = "rgb_text_formatter",
