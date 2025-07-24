@@ -5,12 +5,11 @@ namespace Drupal\rgb_color_field\Plugin\Field\FieldType;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Plugin implementation of the 'rgb_color' field type.
- * 
- * @FieldType(
+ *
+ *  @FieldType(
  *  id = "rgb_color",
  *  label = @Translation("RGB Color"),
  *  description = @Translation("A field storing RGB color in hex format."),
@@ -19,13 +18,13 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class RgbColorItem extends FieldItemBase {
-  
+
   /**
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['value'] = DataDefinition::create('string')
-    ->setLabel(t("Hex Color Value"))->setRequired(TRUE);
+      ->setLabel(t("Hex Color Value"))->setRequired(TRUE);
     return $properties;
   }
 
@@ -49,5 +48,5 @@ class RgbColorItem extends FieldItemBase {
   public function isEmpty() {
     return empty($this->get('value')->getValue());
   }
+
 }
-?>
