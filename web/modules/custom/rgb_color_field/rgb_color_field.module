@@ -1,0 +1,38 @@
+<?php
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * This hook implementation restricts the 'view' and 'edit' access
+ * of the 'rgb_color' field to administrators only.
+ * 
+ * @param string $operation
+ *   The operation being performed on the field. Possible values: 'view', 
+ *   'edit', etc.
+ * @param FieldDefinitionInterface $field_definition
+ *   The field definition object.
+ * @param AccountInterface $account
+ *   The user account requesting access.
+ * @param FieldItemListInterface|null $items
+ *   The list of field items. Defaults to NULL.
+ *
+ * @return AccessResultInterface
+ *   The access result object indicating whether access is allowed, denied,
+ *   or neutral. 
+ */
+function rgb_color_field_entity_field_access(string $operation, FieldDefinitionInterface $field_definition,
+AccountInterface $account, FieldItemListInterface $items = NULL) {
+  if ($field_definition->getType() === 'rgb_color' &&
+      $field_definition->getTargetEntityTypeId() === 'node') {
+    if (!in_array('administrator', $account->getRoles())) {
+      if (in_array($operation, ['view', 'edit'])) {
+        return AccessResult::forbidden();
+      }
+    }
+  }
+  return AccessResult::neutral();
+}
+?>
