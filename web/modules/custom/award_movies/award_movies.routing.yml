@@ -1,0 +1,31 @@
+entity.award_movies.collection:
+  path: '/admin/config/media/award-movies'
+  defaults:
+    _entity_list: 'award_movies'
+    _title: 'Award Winning Movies'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.award_movies.add_form:
+  path: '/admin/config/media/award-movies/add'
+  defaults:
+    _entity_form: 'award_movies.add'
+    _title: 'Add Award Winning Movies'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.award_movies.edit_form:
+  path: '/admin/config/media/award-movies/{award_movies}/edit'
+  defaults:
+    _entity_form: 'award_movies.edit'
+    _title: 'Edit Award Winning Movies'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.award_movies.delete_form:
+  path: '/admin/config/media/award-movies/{award_movies}/delete'
+  defaults:
+    _entity_form: 'award_movies.delete'
+    _title: 'Delete Award Winning Movies'
+  requirements:
+    _permission: 'administer site configuration'

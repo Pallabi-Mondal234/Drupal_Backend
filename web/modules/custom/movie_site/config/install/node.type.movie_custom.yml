@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_name: movie
+description: 'A content type for movies.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true
+translatable: false
+third_party_settings: { }
+type: movie_custom
+name: movie_custom

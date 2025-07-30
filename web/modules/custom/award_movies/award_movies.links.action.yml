@@ -1,0 +1,5 @@
+award_movies.award_winning_movie_add:
+  route_name: entity.award_movies.add_form
+  title: 'Add Award Winning Movie'
+  appears_on:
+    - entity.award_movies.collection

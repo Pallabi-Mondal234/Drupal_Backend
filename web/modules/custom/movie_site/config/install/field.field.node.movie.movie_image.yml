@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.movie
+    - field.storage.node.movie_image
+id: node.movie.movie_image
+field_name: movie_image
+entity_type: node
+bundle: movie
+label: 'Movie Poster'
+description: ''
+required: false
+translatable: false
+default_value: [ ]
+default_value_callback: ''
+settings:
+  file_extension: 'png, jpg, jpeg'
+  file_directory: ''
+  max_filesize: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+field_type: image

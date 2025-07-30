@@ -1,0 +1,7 @@
+name: 'Movie Award Tracking'
+type: module
+description: 'A award tracking module for movies.'
+core_version_requirement: ^10
+package: custom
+dependencies:
+  - node

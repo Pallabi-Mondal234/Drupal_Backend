@@ -1,0 +1,16 @@
+award_winning_movie.*:
+  type: config_entity
+  label: 'Award Winning Movie'
+  mapping:
+    label:
+      type: label
+      label: 'label'
+    id:
+      type: string
+      label: 'Machine name'
+    year:
+      type: integer
+      label: 'Year'
+    award_name:
+      type: string
+      label: 'Award Name'
