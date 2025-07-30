@@ -1,0 +1,9 @@
+name: 'Movie Portal'
+type: module
+description: Provides a Movie content type as a bundle of the Node entity.'
+core_version_requirement: ^10
+package: custom
+dependencies:
+  - node
+  - text
+  - image
