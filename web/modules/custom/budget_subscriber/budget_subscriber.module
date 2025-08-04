@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * This file implements all hook.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\budget_subscriber\Event\MovieBudgetEvent;
+use Symfony\Component\EventDispatcherInterface;
+
+/**
+ * Dispatches a custom movie budget event when a new "movie" node is created.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being inserted.
+ */
+function budget_subscriber_entity_insert(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'movie') {
+    /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $event = new MovieBudgetEvent($entity);
+    $dispatcher->dispatch($event, MovieBudgetEvent::EVENT_NAME);
+  }
+
+}
+
+/**
+ * Dispatches the movie budget event when a "movie" node is updated.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being updated.
+ */
+function budget_subscriber_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'movie') {
+    /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $event = new MovieBudgetEvent($entity);
+    $dispatcher->dispatch($event, MovieBudgetEvent::EVENT_NAME);
+  }
+}
