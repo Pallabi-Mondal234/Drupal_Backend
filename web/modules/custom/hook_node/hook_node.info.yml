@@ -1,0 +1,5 @@
+name: 'Hook Node'
+type: module
+description: This is a custom module which implement all functionality related to node using hooks
+core_version_requirement: ^10
+package: custom
