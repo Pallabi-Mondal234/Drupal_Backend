@@ -10,7 +10,10 @@ use Drupal\budget_subscriber\Event\MovieBudgetEvent;
 use Symfony\Component\EventDispatcherInterface;
 
 /**
- * Implements hook_entity_insert().
+ * Dispatches a custom movie budget event when a new "movie" node is created.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being inserted.
  */
 function budget_subscriber_entity_insert(EntityInterface $entity) {
   if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'movie') {
@@ -23,7 +26,10 @@ function budget_subscriber_entity_insert(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_entity_update().
+ * Dispatches the movie budget event when a "movie" node is updated.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The entity being updated.
  */
 function budget_subscriber_entity_update(EntityInterface $entity) {
   if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'movie') {
