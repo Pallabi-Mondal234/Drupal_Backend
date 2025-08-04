@@ -1,0 +1,5 @@
+name: 'Budget Subscriber'
+type: module
+description: 'Show the budget review using event subscriber'
+core_version_requirement: ^10
+package: custom

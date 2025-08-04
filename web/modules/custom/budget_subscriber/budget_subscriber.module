@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * This file implements all hook.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\budget_subscriber\Event\MovieBudgetEvent;
+use Symfony\Component\EventDispatcherInterface;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function budget_subscriber_entity_insert(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'movie') {
+    /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $event = new MovieBudgetEvent($entity);
+    $dispatcher->dispatch($event, MovieBudgetEvent::EVENT_NAME);
+  }
+
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function budget_subscriber_entity_update(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'movie') {
+    /** @var \Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher */
+    $dispatcher = \Drupal::service('event_dispatcher');
+    $event = new MovieBudgetEvent($entity);
+    $dispatcher->dispatch($event, MovieBudgetEvent::EVENT_NAME);
+  }
+}
