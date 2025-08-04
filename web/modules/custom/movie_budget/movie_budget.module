@@ -8,7 +8,12 @@
 use Drupal\node\NodeInterface;
 
 /**
- * Implements hook_node_view().
+ * Adds a budget status message to the render array when viewing a "movie" node.
+ *
+ * @param array &$build
+ *   A renderable array representing the node content.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node being viewed.
  */
 function movie_budget_node_view(array &$build, NodeInterface $node) {
 
