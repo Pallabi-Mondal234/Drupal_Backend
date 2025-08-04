@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Import NodeInterface to use type hinting for node and access node methods.
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_view().
+ */
+function movie_budget_node_view(array &$build, NodeInterface $node) {
+
+  if ($node->bundle() == 'movie') {
+    $config_amount = \Drupal::config('movie_budget.settings')->get('budget_amount');
+    $movie_amount = $node->get('field_movie_price')->value;
+
+    if ($movie_amount < $config_amount) {
+      $status = 'The movie is under budget.';
+    }
+    elseif ($movie_amount > $config_amount) {
+      $status = 'The movie is over budget.';
+    }
+    else {
+      $status = 'The movie is within budget.';
+    }
+  }
+
+  $build['movie_budget_status'] = [
+    '#markup' => '<div class="movie-budget-status"><strong>Budget Review : ' . $status . '</strong></div>',
+    '#weight' => -10,
+  ];
+}
