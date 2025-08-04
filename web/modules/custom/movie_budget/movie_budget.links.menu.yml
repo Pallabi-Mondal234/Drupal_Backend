@@ -1,0 +1,6 @@
+movie_budget.settings:
+  title: 'Movie Budget'
+  description: 'Review the movie budget.'
+  route_name: movie_budget.config_form
+  parent: system.admin
+  weight: 6

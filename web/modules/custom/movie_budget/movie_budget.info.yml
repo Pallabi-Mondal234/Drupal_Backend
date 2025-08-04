@@ -1,0 +1,5 @@
+name: 'Movie Budget'
+type: module
+description: 'Review the budget of the movie.'
+core_version_requirement: ^10
+package: custom
