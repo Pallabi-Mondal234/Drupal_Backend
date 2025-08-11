@@ -1,0 +1,5 @@
+name: 'Event Status'
+type: module
+description: 'Show the different events of a year'
+core_version_requirement: ^10
+package: custom

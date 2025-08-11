@@ -1,0 +1,7 @@
+tax_form.router:
+  path: '/taxonomy_form'
+  defaults:
+    _form: 'Drupal\tax_form\Form\TaxonomyForm'
+    _title: 'Taxonomy Term Accepted Form'
+  requirements:
+    _permission: 'access content'

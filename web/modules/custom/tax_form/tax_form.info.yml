@@ -1,0 +1,5 @@
+name: 'Taxonomy Form'
+type: module
+description: 'A Form That accepts only existing taxonomy term'
+core_version_requirement: ^10
+package: custom
